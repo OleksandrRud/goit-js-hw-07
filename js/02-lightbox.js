@@ -1,4 +1,31 @@
-import { galleryItems } from './gallery-items.js';
-// Change code below this line
+import { galleryItems } from "./gallery-items.js";
 
-console.log(galleryItems);
+const galleeryRef = document.querySelector(".gallery");
+
+function createGalleryEl(items) {
+  return items
+    .map(
+      item => `<a class="gallery__item" href="${item.original}">
+  <img class="gallery__image"
+  src="${item.preview}" 
+  alt="${item.description}" />
+</a>`
+    )
+    .join("");
+}
+
+const addItemToMarkup = createGalleryEl(galleryItems);
+console.log(addItemToMarkup);
+galleeryRef.innerHTML = addItemToMarkup;
+
+function movingImage(e) {
+  e.preventDefault();
+  if (e.target.nodeName !== "IMG") {
+    return;
+  }
+  const lightbox = new SimpleLightbox(".gallery a", {
+    captionsData: "alt",
+    captionDelay: 250
+  });
+}
+galleeryRef.addEventListener("click", movingImage);
