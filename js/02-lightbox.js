@@ -18,14 +18,7 @@ const addItemToMarkup = createGalleryEl(galleryItems);
 console.log(addItemToMarkup);
 galleeryRef.innerHTML = addItemToMarkup;
 
-function movingImage(e) {
-  e.preventDefault();
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250
-  });
-}
-galleeryRef.addEventListener("click", movingImage);
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250
+});
